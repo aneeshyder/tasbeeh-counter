@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+body { font-family: 'Open Sans', sans-serif;text-align: center;background-color: #b9d7f1;}
+
+.counter .counter,
+button.add-tasbeeh-btn {
+    background-color: #fff;
+    appearance: none;
+    border: 0;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    font-size: 41px;
+    font-weight: 300;
+    font-family: inherit;
+    margin: 0 auto;
+}
+
+.counter .counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    display: none;
+    -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;
+}
+
+.addTasbeehPopup {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0,0,0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addTasbeehPopup.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.addTasbeehPopup form#add-tasbeeh {
+    background-color: #fff;
+    max-height: 90vh;
+    max-width: 90vw;
+    height: 330px;
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addTasbeehPopup form#add-tasbeeh input:not([type="submit"]) {
+    border: 1px solid #76c7f5;
+    margin: 10px 0;
+    text-align: center;
+    padding: 8px 10px;
+    font-style: italic;
+}
+
+#reset,
+.addTasbeehPopup form#add-tasbeeh input[type="submit"] {
+       border: 1px solid #76c7f5;
+       margin: 10px 0;
+       text-align: center;
+       padding: 8px 10px;
+       background-color: #61b6fd;
+       color: #fff;
+       width: 100px;
+       border-radius: 5px;
+       cursor: pointer;
+}
