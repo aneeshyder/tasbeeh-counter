@@ -37,7 +37,7 @@ function getItems() {
     let getCount = parseInt(localStorage.getItem('count'));
     let getCounting = parseInt(localStorage.getItem('countingItem'));
 
-    if (getCounting === getCount && getCounting === NaN) {
+    if (getCounting === getCount || getCounting === NaN) {
         reset();
     } else {
         count = getCount;
