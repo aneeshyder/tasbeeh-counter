@@ -8,6 +8,7 @@ const nameInput = document.getElementById('name');
 const countInput = document.getElementById('count');
 const cancel = document.querySelector('button.cancel');
 const submit = document.querySelector('#add-tasbeeh input[type="submit"]');
+const notify = document.getElementById('notify');
 
 var count = '';
 var name = '';
@@ -90,7 +91,9 @@ function counterFunc(ele){
 
     counting++;
     if (counting >= count) {
-        alert('Alhumdolillaah, You have recited ' + name + '' + count + ' times');
+        notify.play();
+        navigator.vibrate(200);
+        alert('Alhumdolillaah, You have recited ' + name + '' + count + ' times');        
         reset();
     } else {
         localStorage.setItem('countingItem', counting);
