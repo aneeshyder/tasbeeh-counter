@@ -91,8 +91,8 @@ function counterFunc(ele){
 
     counting++;
     if (counting >= count) {
-        notify.play();
         navigator.vibrate(200);
+        notify.play();
         alert('Alhumdolillaah, You have recited ' + name + '' + count + ' times');        
         reset();
     } else {
