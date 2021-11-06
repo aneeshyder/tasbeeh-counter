@@ -9,6 +9,7 @@ const countInput = document.getElementById('count');
 const cancel = document.querySelector('button.cancel');
 const submit = document.querySelector('#add-tasbeeh input[type="submit"]');
 const notify = document.getElementById('notify');
+const sound_btn = document.getElementById('sound');
 
 var count = '';
 var name = '';
@@ -65,10 +66,21 @@ submit.addEventListener('click', function(e){
 
 });
 
-function getItems() {
+function setItems() {
     let getName = localStorage.getItem('name');
     let getCount = parseInt(localStorage.getItem('count'));
     let getCounting = parseInt(localStorage.getItem('countingItem'));
+ 
+    switch ( getSoundStatus()) {
+        case 'true':
+           sound_btn.checked = false;
+        break;
+        case 'false':
+           sound_btn.checked = true;
+        break;
+        default:
+           sound_btn.checked = false;
+    }
 
     if (getCounting === getCount || getName === null) {
         reset();
@@ -80,10 +92,11 @@ function getItems() {
         counter.innerText = getCounting;
 
         details.innerText = `${getName} ${getCount} times`;
+       
     }
 }
 
-getItems();
+setItems();
 
 function counterFunc(ele){
     let counting = parseInt(ele.innerText);
@@ -92,7 +105,9 @@ function counterFunc(ele){
     counting++;
     if (counting >= count) {
         navigator.vibrate(200);
-        notify.play();
+        if ( getSoundStatus() === 'true' || getSoundStatus() === null ) {
+            notify.play();
+        }        
         alert('Alhumdolillaah, You have recited ' + name + '' + count + ' times');        
         reset();
     } else {
@@ -136,3 +151,17 @@ function showSuccess(input) {
 cancel.addEventListener('click', function(e){
     reset();
 });
+
+sound_btn.addEventListener('change', function(){
+    if( this.checked ) {
+       localStorage.setItem('playSound', false);
+    } else {
+        localStorage.setItem('playSound', true);
+    }
+});
+
+
+function getSoundStatus() {
+    let soundStatus = localStorage.getItem('playSound');
+    return soundStatus;
+}
