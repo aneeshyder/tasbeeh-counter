@@ -1,19 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 
-body { font-family: 'Open Sans', sans-serif;text-align: center;background-color: #b9d7f1;}
+:root {
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+* {
+    box-sizing: border-box;
+}
+
+body { font-family: 'Open Sans', sans-serif;text-align: center;background-color: #b9d7f1;margin: 20px 0}
+
+h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+button#reset {
+    display: flex;
+    align-items:center;
+    margin: 0 auto;
+}
+button#reset img {
+    margin-right: 5px;
+    height:20px;
+}
 
 .counter .counter,
 button.add-tasbeeh-btn {
     background-color: #fff;
     appearance: none;
     border: 0;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
+    height: 55vh;
     font-size: 41px;
     font-weight: 300;
     font-family: inherit;
     margin: 0 auto;
+    width: 600px;
+    max-width: 90%;
+    min-height: 320px;
+    font-size: 76px;
+    font-weight: 700;
 }
 
 .counter .counter {
@@ -62,20 +90,87 @@ button.add-tasbeeh-btn {
 .addTasbeehPopup form#add-tasbeeh input:not([type="submit"]) {
     border: 1px solid #76c7f5;
     margin: 10px 0;
-    text-align: center;
-    padding: 8px 10px;
-    font-style: italic;
+    padding: 15px 12px;
+    font-size: 15px;
+    border-radius: 5px;
 }
 
+.cancel,
 #reset,
 .addTasbeehPopup form#add-tasbeeh input[type="submit"] {
-       border: 1px solid #76c7f5;
-       margin: 10px 0;
-       text-align: center;
-       padding: 8px 10px;
-       background-color: #61b6fd;
-       color: #fff;
-       width: 100px;
-       border-radius: 5px;
-       cursor: pointer;
+    border: 1px solid #76c7f5;
+    margin: 10px 0;
+    text-align: center;
+    padding: 12px 9px;
+    background-color: #61b6fd;
+    color: #fff;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
+.cancel,
+.addTasbeehPopup form#add-tasbeeh input[type="submit"] {
+    display: inline-block;
+    margin: 5px;
+}
+
+button.cancel {
+    background-color: #dd4040;
+}
+
+
+.form-control {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .form-control input:focus {
+    outline: 0;
+    border-color: #777;
+  }
+  
+  .form-control.success input {
+    border-color: var(--success-color) !important;
+  }
+  
+  .form-control.error input {
+    border-color: var(--error-color) !important;
+  }
+  
+  .form-control small {
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+  }
+  
+  .form-control.error small {
+    visibility: visible;
+  }
+  
+  .form button {
+    cursor: pointer;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+  }

@@ -11,16 +11,25 @@
     <h1>Tasbeeh Counter</h1>
     <div class="counter">
         <button class="add-tasbeeh-btn">+</button>
-        <h2 class="tasbeeh-details">Tasbeeh details</h2>
         <div class="addTasbeehPopup">
             <form id="add-tasbeeh">
-                <input class ="name" type="text" placeholder="Add Tasbeeh name">
-                <input class="count" type="number" placeholder="Add Tasbeeh count">
-                <input type="submit" name="submit">
+                <div class="form-control">
+                    <input id="name" class ="name" type="text" placeholder="Add Tasbeeh name">
+                    <small></small>
+                </div>
+                <div class="form-control">
+                    <input id="count" class="count" type="number" placeholder="Add Tasbeeh count">                    
+                    <small></small>
+                </div>
+                <div class="btns">
+                    <input type="submit" name="submit">
+                    <button class="cancel">Cancel</button>
+                </div>
             </form>
         </div>
         <div class="counter">0</div>
-        <button id="reset">Reset</button>
+        <h2 class="tasbeeh-details">Tasbeeh details</h2>
+        <button id="reset"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABoElEQVRIie3Wz05TQRTH8Y+6FF2xUAqJQhPd+xaKdEv0EdAFgQfgFdwp8AAG/2LSxI0r34IEXBDDikTdldLoYs7NJdXc3imXuuGXTKbTzjnfe89MZ35cakK6kjF3Dh08wp0YwxH28BkfcdjUw7WwhVP8HtFOsInZM/Eb40CX8CuS9vAay7iH69EW8CR+68fc44jdiHGWnmMQgTu4WyNmHrv+rkRtLQX0FKs5gdK++TIOuKUsby6UsrzZ4G1leZuA1gLPSeXtqbemY+vq0LiDa/iAb5MEP4x+9yKh/9KetCbtSYOL3Xyj4bxfo40ETzUIvRk5f579cniNj6KfaRBc5PpeBd6P/kGD4CLXQRW4G32nQXCRq1s1aVa6YXrSgX9etSNXXzqKK7UpbYa3DYDfR66XdSbPKHf32jmg65HjB27VDXqsvBbHga9H7ECySll6pjQC7ySnMUptZXkHWMmFFlqU/viF9dmRbM596ZCZis9P8UbyXEV5s990WNN4ofRTVa2PV7g9KmmOvW1JlmhRuqsLe3soHQ5dfDJ0Ql3qv+sPFtOAAa5HY78AAAAASUVORK5CYII="/>Reset</button>
     </div>
     <script src="script.js"></script>
 </body>

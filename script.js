@@ -4,31 +4,63 @@ const form = document.getElementById('add-tasbeeh');
 const counter = document.querySelector('.counter .counter');
 const details =  document.querySelector('.tasbeeh-details');
 const resetBtn = document.getElementById('reset');
+const nameInput = document.getElementById('name');
+const countInput = document.getElementById('count');
+const cancel = document.querySelector('button.cancel');
+const submit = document.querySelector('#add-tasbeeh input[type="submit"]');
 
 var count = '';
 var name = '';
+let errors = {
+    name: false,
+    count: false,
+}
 
+// Get fieldname
+function getFieldName(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+// Check required fields
+function checkRequired(inputArr){
+    inputArr.forEach(function(input){
+        if(input.value.trim() === '' || input.value.trim() == 0){
+            showError(input, `${getFieldName(input)} is Required`);
+            errors[input.id] = false;
+            return false;
+        } else {
+            showSuccess(input);
+            errors[input.id] = true;
+        }
+    });
+}
 
 startBtn.addEventListener('click', function(){
     popUp.classList.add('visible');
 });
 
-form.addEventListener('submit', function(e){
+submit.addEventListener('click', function(e){
     e.preventDefault();
-    name =  form.querySelector('.name').value;
-    count =  form.querySelector('.count').value;
-    count = parseInt(count);
 
-    localStorage.setItem('name', name);
-    localStorage.setItem('count', count);
-    details.innerText = `${name} ${count} times`;
+    checkRequired([nameInput, countInput ]);
 
-    popUp.classList.remove('visible');
-    startBtn.style.display = 'none';
-    counter.style.display = 'flex';
+    if (errors.count && errors.name) {
 
-    localStorage.setItem('countingItem', 0);
-    counter.innerText = 0;
+        name =  form.querySelector('.name').value;
+        count =  form.querySelector('.count').value;
+        count = parseInt(count);
+
+        localStorage.setItem('name', name);
+        localStorage.setItem('count', count);
+        details.innerText = `${name} ${count} times`;
+
+        popUp.classList.remove('visible');
+        startBtn.style.display = 'none';
+        counter.style.display = 'flex';
+
+        localStorage.setItem('countingItem', 0);
+        counter.innerText = 0;
+    }
 
 });
 
@@ -83,5 +115,21 @@ function reset(){
     localStorage.setItem('countingItem', 0);
     localStorage.setItem('count', 0);
 }
+ 
+function showError(input, message){
+    const formControl = input.parentElement;
+    formControl.className = 'form-control error';
 
-  
+    const small = formControl.querySelector('small');
+    small.innerText = message;
+}
+
+function showSuccess(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
+}
+
+
+cancel.addEventListener('click', function(e){
+    reset();
+});
